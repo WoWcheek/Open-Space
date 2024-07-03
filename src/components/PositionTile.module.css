@@ -1,0 +1,11 @@
+.title {
+    font-size: 2rem;
+}
+
+.details {
+    display: flex;
+    gap: 2rem;
+
+    font-size: 1.25rem;
+    font-style: italic;
+}

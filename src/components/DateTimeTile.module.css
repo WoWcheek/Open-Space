@@ -1,0 +1,14 @@
+.time {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.date {
+    font-size: 1.25rem;
+    font-style: italic;
+}
