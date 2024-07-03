@@ -1,0 +1,26 @@
+.mapContainer {
+    height: 100%;
+    flex: 1;
+}
+
+.map {
+    height: 100%;
+    width: 100%;
+}
+
+:global(.leaflet-popup .leaflet-popup-content-wrapper) {
+    padding-right: 0.6rem;
+
+    background-color: var(--color-dark--1);
+    border-radius: 5px;
+}
+
+:global(.leaflet-popup-content span:first-child) {
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+:global(.leaflet-popup .leaflet-popup-tip) {
+    background-color: var(--color-dark--1);
+}

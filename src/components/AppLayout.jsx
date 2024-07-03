@@ -1,3 +1,4 @@
+import Map from "./Map";
 import Astronauts from "./Astronauts";
 import PositionTile from "./PositionTile";
 import DateTimeTile from "./DateTimeTile";
@@ -8,7 +9,7 @@ function AppLayout() {
         <main className={styles.app}>
             <PositionTile />
             <DateTimeTile />
-            <div>Map</div>
+            <Map />
             <Astronauts />
         </main>
     );
