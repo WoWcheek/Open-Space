@@ -1,15 +1,12 @@
-import PositionTile from "./PositionTile";
-import DateTimeTile from "./DateTimeTile";
-import styles from "./App.module.css";
+import { Provider } from "react-redux";
+import { store } from "../redux/store";
+import AppLayout from "./AppLayout";
 
 function App() {
     return (
-        <main className={styles.app}>
-            <PositionTile />
-            <DateTimeTile />
-            <div>Map</div>
-            <div>People</div>
-        </main>
+        <Provider store={store}>
+            <AppLayout />
+        </Provider>
     );
 }
 
