@@ -28,3 +28,15 @@
 .btn:hover {
     filter: brightness(1.1);
 }
+
+@media screen and (max-width: 700px) {
+    .btn {
+        left: 40%;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .btn {
+        top: 85%;
+    }
+}

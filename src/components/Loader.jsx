@@ -1,6 +1,6 @@
 import styles from "./Loader.module.css";
 
-function Loader() {
+const Loader = () => {
     return (
         <div className={styles.load}>
             <div></div>
@@ -9,6 +9,6 @@ function Loader() {
             <div></div>
         </div>
     );
-}
+};
 
 export default Loader;

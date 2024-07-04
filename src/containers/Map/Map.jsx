@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import markerIcon from "../assets/images/marker.png";
-import Button from "./Button";
+import Button from "../../components/Button";
 import styles from "./Map.module.css";
+import markerIcon from "../../assets/images/marker.png";
 
 const customMarker = L.icon({
     iconUrl: markerIcon,
@@ -13,21 +13,21 @@ const customMarker = L.icon({
     shadowSize: [0, 0]
 });
 
-function ChangeCenter({ center }) {
+const ChangeCenter = ({ center }) => {
     const map = useMap();
     map.setView(center);
     return null;
-}
+};
 
 ChangeCenter.propTypes = {
     center: PropTypes.array
 };
 
-function Map() {
+const Map = () => {
     const [markerPosition, setMarkerPosition] = useState([50, 30]);
     const [mapCenter, setMapCenter] = useState([]);
 
-    const { issPosition } = useSelector((state) => state.iss);
+    const { issPosition } = useSelector(state => state.iss);
 
     useEffect(() => {
         if (issPosition?.latitude ?? false) {
@@ -76,6 +76,6 @@ function Map() {
             )}
         </div>
     );
-}
+};
 
 export default Map;

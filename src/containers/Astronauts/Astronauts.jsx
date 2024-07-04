@@ -1,15 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRefresh } from "../../hooks/refresh";
+import {
+    invalidateTags,
+    useGetAstronautsQuery
+} from "../../redux/api/apiSlice";
+import { setInfo } from "../../redux/app/issSlice";
+import Loader from "../../components/Loader";
 import AstronautCard from "./AstronautCard";
-import { setInfo } from "../redux/app/issSlice";
-import { invalidateTags, useGetAstronautsQuery } from "../redux/api/apiSlice";
 import styles from "./Astronauts.module.css";
-import Loader from "./Loader";
 
-function Astronauts() {
+const Astronauts = () => {
     const dispatch = useDispatch();
     const { data, isLoading, isError } = useGetAstronautsQuery();
-    const { issAstronauts } = useSelector((state) => state.iss);
+    const { issAstronauts } = useSelector(state => state.iss);
 
     useEffect(() => {
         if (!data) {
@@ -17,8 +21,8 @@ function Astronauts() {
         }
 
         const astronautsFromIss = data.people
-            .filter((p) => p.craft === "ISS")
-            .map((p) => {
+            .filter(p => p.craft === "ISS")
+            .map(p => {
                 return {
                     name: p.name,
                     avatar: p.avatar
@@ -28,13 +32,9 @@ function Astronauts() {
         dispatch(setInfo({ issAstronauts: astronautsFromIss }));
     }, [data, dispatch]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            dispatch(invalidateTags(["Astronauts"]));
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, [dispatch]);
+    useRefresh(() => {
+        dispatch(invalidateTags(["Astronauts"]));
+    });
 
     const showLoader = isLoading || isError;
 
@@ -47,7 +47,7 @@ function Astronauts() {
             ) : (
                 <>
                     <div className={styles.list}>
-                        {issAstronauts.map((astr) => (
+                        {issAstronauts.map(astr => (
                             <AstronautCard
                                 key={astr.name}
                                 name={astr.name}
@@ -62,6 +62,6 @@ function Astronauts() {
             )}
         </div>
     );
-}
+};
 
 export default Astronauts;

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRefresh } from "../../hooks/refresh";
 import InfoTile from "./InfoTile";
 import styles from "./DateTimeTile.module.css";
 
-function DateTimeTile() {
+const DateTimeTile = () => {
     const [now, setNow] = useState(new Date());
 
     const utcTimeToDisplay = now.toLocaleString("en-GB", {
@@ -19,13 +20,9 @@ function DateTimeTile() {
         timeZone: "UTC"
     });
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setNow(new Date());
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, []);
+    useRefresh(() => {
+        setNow(new Date());
+    });
 
     return (
         <InfoTile>
@@ -36,6 +33,6 @@ function DateTimeTile() {
             <p className={styles.date}>{utcDateToDisplay}</p>
         </InfoTile>
     );
-}
+};
 
 export default DateTimeTile;
