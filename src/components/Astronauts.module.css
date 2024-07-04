@@ -1,24 +1,25 @@
 .container {
-    padding: 0.3rem 0;
+    padding: 1rem 0.5rem 0.3rem 0;
 }
 
 .list {
-    max-height: 500px;
+    height: 500px;
 
-    padding: 0.6rem;
+    padding: 0 1.4rem;
 
     display: flex;
     flex-direction: column;
     gap: 20px;
 
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 .count {
     padding: 0.4rem;
 
     font-size: 1.1rem;
-    color: var(--color-light--2);
+    color: var(--color-light--1);
     font-weight: 600;
     text-align: center;
 }

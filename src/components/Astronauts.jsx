@@ -11,18 +11,20 @@ function Astronauts() {
     const { issAstronauts } = useSelector((state) => state.iss);
 
     useEffect(() => {
-        if (data) {
-            const astronautsFromIss = data.people
-                .filter((p) => p?.craft === "ISS")
-                .map((p) => {
-                    return {
-                        name: p.name,
-                        avatar: p?.avatar
-                    };
-                });
-
-            dispatch(setInfo({ issAstronauts: astronautsFromIss }));
+        if (!data) {
+            return;
         }
+
+        const astronautsFromIss = data.people
+            .filter((p) => p.craft === "ISS")
+            .map((p) => {
+                return {
+                    name: p.name,
+                    avatar: p.avatar
+                };
+            });
+
+        dispatch(setInfo({ issAstronauts: astronautsFromIss }));
     }, [data, dispatch]);
 
     useEffect(() => {

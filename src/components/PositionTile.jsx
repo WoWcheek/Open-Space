@@ -11,13 +11,15 @@ function PositionTile() {
     const { issPosition } = useSelector((state) => state.iss);
 
     useEffect(() => {
-        if (data) {
-            dispatch(
-                setInfo({
-                    issPosition: data.iss_position
-                })
-            );
+        if (!data) {
+            return;
         }
+
+        dispatch(
+            setInfo({
+                issPosition: data.iss_position
+            })
+        );
     }, [data, dispatch]);
 
     useEffect(() => {

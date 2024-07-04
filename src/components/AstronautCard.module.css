@@ -1,5 +1,5 @@
 .astronautCard {
-    padding: 0.4rem 0.6rem;
+    padding: 0.4rem 1.4rem;
 
     height: 5rem;
 
@@ -8,14 +8,16 @@
     align-items: center;
     gap: 1rem;
 
-    background-color: var(--color-light--3);
+    background-color: var(--color-dark--3);
     border-radius: 10px;
 }
 
 .astronautCard .avatar {
-    height: 90%;
+    height: 75%;
 }
 
 .astronautCard .name {
     font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
