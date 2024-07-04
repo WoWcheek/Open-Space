@@ -1,0 +1,10 @@
+.infoTile {
+    padding: 1rem 1.5rem;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+}

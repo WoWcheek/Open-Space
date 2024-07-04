@@ -1,0 +1,44 @@
+.load {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+
+    color: var(--color-light--2);
+}
+
+.load div {
+    height: 75%;
+    width: 75%;
+    display: block;
+
+    margin: 5px;
+
+    position: absolute;
+
+    border: 4px solid currentColor;
+    border-radius: 50%;
+    border-color: currentColor transparent transparent transparent;
+
+    animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.load div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.load div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.load div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,27 @@
+.title {
+    font-size: 2rem;
+}
+
+.details {
+    display: flex;
+    gap: 2rem;
+
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+.loadContainer {
+    height: 2rem;
+    width: 2rem;
+
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+}
+
+@media screen and (max-width: 447px) {
+    .loadContainer {
+        top: 1rem;
+        bottom: auto;
+    }
+}
