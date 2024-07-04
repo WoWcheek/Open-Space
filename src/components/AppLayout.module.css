@@ -1,6 +1,6 @@
 .app {
-    min-height: 100dvh;
-    padding: 2rem;
+    height: 100dvh;
+    padding: 1.8rem;
 
     display: grid;
     grid-template-columns: 5fr 2fr;
