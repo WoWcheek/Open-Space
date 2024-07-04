@@ -40,3 +40,9 @@
     box-shadow: none;
     background-color: var(--color-dark--1);
 }
+
+@media screen and (max-width: 1024px) {
+    .mapContainer {
+        grid-column: span 2;
+    }
+}
