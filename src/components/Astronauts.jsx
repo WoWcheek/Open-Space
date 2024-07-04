@@ -4,10 +4,11 @@ import AstronautCard from "./AstronautCard";
 import { setInfo } from "../redux/app/issSlice";
 import { invalidateTags, useGetAstronautsQuery } from "../redux/api/apiSlice";
 import styles from "./Astronauts.module.css";
+import Loader from "./Loader";
 
 function Astronauts() {
     const dispatch = useDispatch();
-    const { data } = useGetAstronautsQuery();
+    const { data, isLoading, isError } = useGetAstronautsQuery();
     const { issAstronauts } = useSelector((state) => state.iss);
 
     useEffect(() => {
@@ -35,20 +36,30 @@ function Astronauts() {
         return () => clearInterval(interval);
     }, [dispatch]);
 
+    const showLoader = isLoading || isError;
+
     return (
         <div className={styles.container}>
-            <div className={styles.list}>
-                {issAstronauts.map((astr) => (
-                    <AstronautCard
-                        key={astr.name}
-                        name={astr.name}
-                        avatar={astr?.avatar}
-                    />
-                ))}
-            </div>
-            <p className={styles.count}>
-                Total amount: {issAstronauts.length} people on ISS
-            </p>
+            {showLoader ? (
+                <div className={styles.loadContainer}>
+                    <Loader />
+                </div>
+            ) : (
+                <>
+                    <div className={styles.list}>
+                        {issAstronauts.map((astr) => (
+                            <AstronautCard
+                                key={astr.name}
+                                name={astr.name}
+                                avatar={astr?.avatar}
+                            />
+                        ))}
+                    </div>
+                    <p className={styles.count}>
+                        Total amount: {issAstronauts.length} people on ISS
+                    </p>
+                </>
+            )}
         </div>
     );
 }
