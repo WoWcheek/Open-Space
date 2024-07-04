@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import AstronautCard from "./AstronautCard";
 import { setInfo } from "../redux/app/issSlice";
 import { invalidateTags, useGetAstronautsQuery } from "../redux/api/apiSlice";
 import styles from "./Astronauts.module.css";
@@ -13,7 +14,12 @@ function Astronauts() {
         if (data) {
             const astronautsFromIss = data.people
                 .filter((p) => p?.craft === "ISS")
-                .map((p) => p?.name);
+                .map((p) => {
+                    return {
+                        name: p.name,
+                        avatar: p?.avatar
+                    };
+                });
 
             dispatch(setInfo({ issAstronauts: astronautsFromIss }));
         }
@@ -31,7 +37,11 @@ function Astronauts() {
         <div className={styles.container}>
             <div className={styles.list}>
                 {issAstronauts.map((astr) => (
-                    <p key={astr}>{astr}</p>
+                    <AstronautCard
+                        key={astr.name}
+                        name={astr.name}
+                        avatar={astr?.avatar}
+                    />
                 ))}
             </div>
             <p className={styles.count}>

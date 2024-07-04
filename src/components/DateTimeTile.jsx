@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import InfoTile from "./InfoTile";
 import styles from "./DateTimeTile.module.css";
 
 function DateTimeTile() {
-    const now = new Date();
+    const [now, setNow] = useState(new Date());
 
     const utcTimeToDisplay = now.toLocaleString("en-GB", {
         hour: "2-digit",
@@ -17,6 +18,14 @@ function DateTimeTile() {
         year: "numeric",
         timeZone: "UTC"
     });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setNow(new Date());
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <InfoTile>
