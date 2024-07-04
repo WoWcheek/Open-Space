@@ -6,21 +6,43 @@
 .map {
     height: 100%;
     width: 100%;
+
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+:global(.leaflet-popup) {
+    padding-bottom: 0.5rem;
+}
+
+:global(.leaflet-popup-content) {
+    margin: 0.5rem 0.8rem !important;
+}
+
+:global(.leaflet-bottom.leaflet-right svg) {
+    filter: hue-rotate(-180deg) invert(100%);
 }
 
 :global(.leaflet-popup .leaflet-popup-content-wrapper) {
     padding-right: 0.6rem;
 
+    box-shadow: none;
     background-color: var(--color-dark--1);
     border-radius: 5px;
 }
 
 :global(.leaflet-popup-content span:first-child) {
-    color: #fff;
-    font-size: 1.5rem;
+    color: var(--color-light-1);
+    font-size: 1rem;
     line-height: 1;
 }
 
 :global(.leaflet-popup .leaflet-popup-tip) {
+    box-shadow: none;
     background-color: var(--color-dark--1);
+}
+
+@media screen and (max-width: 1024px) {
+    .mapContainer {
+        grid-column: span 2;
+    }
 }

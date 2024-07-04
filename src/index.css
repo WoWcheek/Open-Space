@@ -2,13 +2,12 @@
 @import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
 
 :root {
-    --color-dark--1: #242a2e;
-    --color-dark--2: #2d3439;
-    --color-dark--3: #42484d;
+    --color-dark--1: #1c2c33;
+    --color-dark--2: #40444b;
+    --color-dark--3: #52575e;
 
-    --color-light--1: #aaa;
-    --color-light--2: #ececec;
-    --color-light--3: #d6dee0;
+    --color-light--1: #c4e1f2;
+    --color-light--2: #77b3d9;
 }
 
 * {
@@ -17,5 +16,5 @@
     box-sizing: border-box;
 
     font-family: "Manrope", sans-serif;
-    color: var(--color-dark--1);
+    color: var(--color-light--1);
 }
