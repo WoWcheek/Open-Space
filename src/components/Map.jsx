@@ -43,32 +43,37 @@ function Map() {
 
     return (
         <div className={styles.mapContainer}>
-            {issPosition && (
-                <MapContainer
-                    center={markerPosition}
-                    zoom={5}
-                    scrollWheelZoom={true}
-                    className={styles.map}
-                >
-                    {mapCenter.length > 0 && (
-                        <ChangeCenter center={mapCenter} />
-                    )}
-                    <TileLayer
-                        attribution='&copy; <a href="https://carto.com/">carto.com</a> contributors'
-                        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
-                    />
-                    {issPosition?.latitude && (
-                        <Marker position={markerPosition} icon={customMarker}>
-                            <Popup>
-                                <span>ISS current position</span>
-                            </Popup>
-                        </Marker>
-                    )}
-                </MapContainer>
+            {issPosition?.latitude && (
+                <>
+                    <MapContainer
+                        center={markerPosition}
+                        zoom={5}
+                        scrollWheelZoom={true}
+                        className={styles.map}
+                    >
+                        {mapCenter.length > 0 && (
+                            <ChangeCenter center={mapCenter} />
+                        )}
+                        <TileLayer
+                            attribution='&copy; <a href="https://carto.com/">carto.com</a> contributors'
+                            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+                        />
+                        {issPosition?.latitude && (
+                            <Marker
+                                position={markerPosition}
+                                icon={customMarker}
+                            >
+                                <Popup>
+                                    <span>ISS current position</span>
+                                </Popup>
+                            </Marker>
+                        )}
+                    </MapContainer>
+                    <Button onClick={() => setMapCenter(markerPosition)}>
+                        Find ISS
+                    </Button>
+                </>
             )}
-            <Button onClick={() => setMapCenter(markerPosition)}>
-                Find ISS
-            </Button>
         </div>
     );
 }

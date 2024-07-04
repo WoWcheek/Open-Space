@@ -9,3 +9,12 @@
     font-size: 1.25rem;
     font-style: italic;
 }
+
+.loadContainer {
+    height: 2rem;
+    width: 2rem;
+
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+}
