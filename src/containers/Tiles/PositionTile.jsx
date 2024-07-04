@@ -1,15 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setInfo } from "../redux/app/issSlice";
-import { useGetIssPositionQuery, invalidateTags } from "../redux/api/apiSlice";
+import { useRefresh } from "../../hooks/refresh";
+import { setInfo } from "../../redux/app/issSlice";
+import {
+    invalidateTags,
+    useGetIssPositionQuery
+} from "../../redux/api/apiSlice";
 import InfoTile from "./InfoTile";
+import Loader from "../../components/Loader";
 import styles from "./PositionTile.module.css";
-import Loader from "./Loader";
 
-function PositionTile() {
+const PositionTile = () => {
     const dispatch = useDispatch();
     const { data, isLoading, isFetching, isError } = useGetIssPositionQuery();
-    const { issPosition } = useSelector((state) => state.iss);
+    const { issPosition } = useSelector(state => state.iss);
 
     useEffect(() => {
         if (!data) {
@@ -23,13 +27,9 @@ function PositionTile() {
         );
     }, [data, dispatch]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            dispatch(invalidateTags(["Position"]));
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, [dispatch]);
+    useRefresh(() => {
+        dispatch(invalidateTags(["Position"]));
+    });
 
     const showLoader = isFetching || isLoading || isError;
 
@@ -47,6 +47,6 @@ function PositionTile() {
             )}
         </InfoTile>
     );
-}
+};
 
 export default PositionTile;

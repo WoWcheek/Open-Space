@@ -1,13 +1,13 @@
 import { Provider } from "react-redux";
-import { store } from "../redux/store";
-import AppLayout from "./AppLayout";
+import { store } from "./redux/store";
+import AppLayout from "./containers/AppLayout/AppLayout";
 
-function App() {
+const App = () => {
     return (
         <Provider store={store}>
             <AppLayout />
         </Provider>
     );
-}
+};
 
 export default App;

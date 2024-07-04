@@ -18,3 +18,10 @@
     bottom: 1rem;
     right: 2rem;
 }
+
+@media screen and (max-width: 447px) {
+    .loadContainer {
+        top: 1rem;
+        bottom: auto;
+    }
+}

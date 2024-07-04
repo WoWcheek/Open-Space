@@ -1,10 +1,10 @@
-import Map from "./Map";
-import Astronauts from "./Astronauts";
-import PositionTile from "./PositionTile";
-import DateTimeTile from "./DateTimeTile";
+import Map from "../Map/Map";
+import PositionTile from "../Tiles/PositionTile";
+import DateTimeTile from "../Tiles/DateTimeTile";
+import Astronauts from "../Astronauts/Astronauts";
 import styles from "./AppLayout.module.css";
 
-function AppLayout() {
+const AppLayout = () => {
     return (
         <main className={styles.app}>
             <PositionTile />
@@ -13,6 +13,6 @@ function AppLayout() {
             <Astronauts />
         </main>
     );
-}
+};
 
 export default AppLayout;

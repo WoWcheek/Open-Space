@@ -4,7 +4,7 @@ export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({ baseUrl: "http://api.open-notify.org" }),
     tagTypes: ["Position", "Astronauts"],
-    endpoints: (builder) => ({
+    endpoints: builder => ({
         getIssPosition: builder.query({
             query: () => "/iss-now.json",
             providesTags: ["Position"]
